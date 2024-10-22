@@ -74,6 +74,7 @@ const Contact: React.FC = () => {
               data-netlify="true"
               name="contact"
               method="POST"
+              netlify
             >
               <input type="hidden" name="form-name" value="contact" />
               <div>
