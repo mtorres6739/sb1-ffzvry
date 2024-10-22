@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import axios from 'axios';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,9 +14,21 @@ const Contact: React.FC = () => {
     setStatus('loading');
 
     try {
-      await axios.post('/.netlify/functions/submit-form', formData);
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString()
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (error) {
       setStatus('error');
     }
@@ -71,11 +82,13 @@ const Contact: React.FC = () => {
             <form 
               onSubmit={handleSubmit} 
               className="space-y-6"
-              data-netlify="true"
               name="contact"
               method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="bot-field" />
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Name
