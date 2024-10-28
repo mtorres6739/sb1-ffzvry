@@ -160,7 +160,7 @@ const Services: React.FC = () => {
               "Unlimited emails",
               "Unlimited WhatsApp messages"
             ]}
-            ctaLink="https://checkout.stripe.com/c/pay/cs_live_b14WoVNZs3NvTN7oBWKoWH5T2PTRqxYsKaLG2PLqrpK5707NyKJDcrl3S7#fidkdWxOYHwnPyd1blppbHNgWjA0SGQxc3xPbkMxfDVBbnxjckp2Q19xRHJSaGdxY0lqQmZ%2FUVJXTEpjMjE1XzZcZ2BLaVdGXGJBVUxVZ0c1RGpTcjNDSmk9RkJtNVx3NG9uNDF8Q2Yzd3FcNTVDUUlcTmlkQCcpJ3ZwZ3Zmd2x1cWxqa1BrbHRwYGtgdnZAa2RnaWBhJz9jZGl2YHgl"
+            ctaLink="https://buy.stripe.com/5kAbJybFz44t2v63cO"
             bestValue={true}
             delay={0.2}
           />
